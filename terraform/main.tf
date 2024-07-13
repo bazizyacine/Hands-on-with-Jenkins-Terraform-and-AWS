@@ -13,11 +13,13 @@ module "dpg_november_asg" {
   UNIQUE_ANIMAL_IDENTIFIER = var.UNIQUE_ANIMAL_IDENTIFIER
   ARTIFACT                 = var.ARTIFACT
 }
+
 data "aws_security_group" "sg" {
   tags = {
     "Purpose" = "Playground"
   }
 }
+
 data "aws_subnet" "sn"{
   vpc_id = data.aws_vpc.vpc.id
   tags = {
@@ -25,6 +27,7 @@ data "aws_subnet" "sn"{
     count = 0
   }
 }
+
 data "aws_vpc" "vpc"{
   tags = {
     Purpose = "Playground"
